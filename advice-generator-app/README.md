@@ -2,20 +2,6 @@
 
 This is a solution to the [Advice generator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Table of contents
-
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [Continued development](#continued-development)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
----
-
 ## Overview
 
 ### Screenshot
@@ -24,8 +10,8 @@ This is a solution to the [Advice generator app challenge on Frontend Mentor](ht
 
 ### Links
 
-- Solution URL: [Click here]()
-- Live Site URL: [Click Here]()
+- Solution URL: [Click here](https://github.com/aniloli42/frontend-mentor-challenges/tree/main/advice-generator-app)
+- Live Site URL: [Click Here](https://aniloli42.github.io/frontend-mentor-challenges/advice-generator-app)
 
 ## My process
 
