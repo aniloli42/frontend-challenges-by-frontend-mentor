@@ -259,6 +259,7 @@ thumbnailsImageButtons.forEach((thumbnailButton, index, elemArr) => {
   thumbnailContainer.append(thumbnailButton);
 
   thumbnailButton.addEventListener("click", () => {
+    INDEX = index;
     updateImage(index, null, elemArr);
     return;
   });
