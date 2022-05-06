@@ -247,8 +247,10 @@ function displayThumbnails(product) {
   const thumbnailImage = document.createElement("img");
 
   button.classList.add("thumbnail-image-button");
+  button.setAttribute("aria-label", "product image thumbnail button");
   thumbnailImage.classList.add("thumbnail-image");
   thumbnailImage.src = product.thumbnail;
+  thumbnailImage.alt = "product image thumbnail";
 
   button.append(thumbnailImage);
 
