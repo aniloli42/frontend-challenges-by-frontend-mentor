@@ -300,6 +300,7 @@ lightBoxThumbnailButtons.forEach((lightBoxThumbnailButton, index, elemArr) => {
   lightBoxThumbnailContainer.append(lightBoxThumbnailButton);
 
   lightBoxThumbnailButton.addEventListener("click", (e) => {
+    LIGHTBOX_INDEX = index;
     updateImage(index, lightBoxProductImage, elemArr);
     return;
   });
