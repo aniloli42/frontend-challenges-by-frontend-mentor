@@ -17,12 +17,14 @@ const Header = (props: Props) => {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+
+    handleResize();
     return () => window.removeEventListener("resize", handleResize);
     // eslint-disable-next-line
   }, []);
 
   const handleResize = () => {
-    if (window.document.body.clientWidth > 768) {
+    if (window.document.body.clientWidth >= 768) {
       setMenuOpen(true);
       return;
     }
@@ -32,7 +34,7 @@ const Header = (props: Props) => {
   const handleOpenMenu = (): void => setMenuOpen(!menuOpen);
 
   return (
-    <header className="flex gap-14 px-6 py-5 justify-between">
+    <header className="flex gap-14 px-6 py-5 justify-between items-center bg-white md:max-w-[1280px] md:mx-auto">
       {/* brand logo */}
       <Link href="/">
         <a>
@@ -51,7 +53,7 @@ const Header = (props: Props) => {
       {/* nav container */}
       <div
         className={`flex absolute inset-0 justify-end bg-black/60 md:bg-transparent md:static md:w-full md:justify-start
-        transition-all delay-200
+        transition-all delay-200 z-50
       ${
         menuOpen
           ? "visible pointer-events-auto opacity-100"
@@ -60,7 +62,7 @@ const Header = (props: Props) => {
       `}
       >
         <div
-          className={`flex flex-col bg-white shadow-2xl shadow-medium-gray/50 w-2/3 max-w-md p-6 md:shadow-none md:p-0 md:flex-row md:justify-between md:w-full md:max-w-none transition-transform duration-300 ease-in-out delay-100 md:translate-x-0
+          className={`flex flex-col bg-white shadow-2xl shadow-medium-gray/50 w-2/3 max-w-md p-6 md:shadow-none md:p-0 md:flex-row md:justify-between md:w-full md:max-w-none transition-transform duration-300 ease-in-out delay-100
           ${menuOpen ? "translate-x-0" : "translate-x-full"}
           `}
         >

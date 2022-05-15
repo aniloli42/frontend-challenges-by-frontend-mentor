@@ -8,12 +8,12 @@ interface Props {
 const NavItem = ({ href, title, children }: Props) => {
   return (
     <Link href={href ?? "#"}>
-      <a>
+      <a className="text-medium-gray focus-visible:text-almost-black hover:text-almost-black outline-none flex items-center">
         {/* For Left Icons */}
-        {children && <span>{children}</span>}
+        {children && <span className="w-8">{children}</span>}
 
         {/* For Link Title */}
-        <span>{title}</span>
+        <span className="whitespace-nowrap">{title}</span>
       </a>
     </Link>
   );
