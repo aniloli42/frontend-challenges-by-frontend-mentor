@@ -31,7 +31,7 @@ const Main = (props: Props) => {
   }, []);
 
   return (
-    <main className="flex flex-col lg:flex-row-reverse lg:max-w-7xl lg:mx-auto md:mt-10 md:min-h-fit md:justify-center md:items-center gap-20 md:px-12 md:my-20">
+    <main className="flex flex-col lg:flex-row-reverse lg:max-w-7xl lg:mx-auto md:my-5 md:min-h-fit md:justify-center md:items-center gap-20 md:px-12">
       {/* main Section Image */}
       <div>
         {device ? (
