@@ -9,18 +9,16 @@ import NavMenu from "components/NavMenu";
 import MenuOpenIcon from "@images/icon-menu.svg";
 import MenuCloseIcon from "@images/icon-close-menu.svg";
 import LogoIcon from "@images/logo.svg";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 interface Props {}
 const Header = (props: Props) => {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(true);
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-
+  useLayoutEffect(() => {
     handleResize();
+    window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-    // eslint-disable-next-line
   }, []);
 
   const handleResize = () => {
