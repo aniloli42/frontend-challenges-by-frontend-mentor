@@ -37,7 +37,7 @@ const Header = (props: Props) => {
     <header className="flex gap-14 px-6 py-5 justify-between items-center bg-white md:max-w-[1280px] md:mx-auto">
       {/* brand logo */}
       <Link href="/">
-        <a>
+        <a aria-label="main page redirect link">
           <LogoIcon />
         </a>
       </Link>
