@@ -11,10 +11,10 @@ import MakerClientIcon from "../../assets/images/client-maker.svg";
 
 interface Props {}
 const Main = (props: Props) => {
-  const [device, setDevice] = useState<boolean>(false);
+  const [device, setDevice] = useState<boolean>(true);
 
   const handleDevice = () => {
-    if (window.document.body.clientWidth >= 768) {
+    if (window.innerWidth >= 768) {
       setDevice(true);
       return;
     }
@@ -31,7 +31,7 @@ const Main = (props: Props) => {
   }, []);
 
   return (
-    <main className="flex flex-col md:flex-row-reverse md:max-w-7xl md:mx-auto md:mt-10 md:min-h-fit md:justify-center md:items-center gap-20 md:px-12 md:my-20">
+    <main className="flex flex-col lg:flex-row-reverse lg:max-w-7xl lg:mx-auto md:mt-10 md:min-h-fit md:justify-center md:items-center gap-20 md:px-12 md:my-20">
       {/* main Section Image */}
       <div>
         {device ? (
@@ -41,9 +41,10 @@ const Main = (props: Props) => {
             width={400}
             height={500}
             layout="fixed"
+            priority
           />
         ) : (
-          <Image src={MobileIcon} alt="Section Image" />
+          <Image src={MobileIcon} alt="Section Image" priority />
         )}
       </div>
 
@@ -51,7 +52,7 @@ const Main = (props: Props) => {
       <div className="my-10 px-4 text-center flex flex-col items-center md:items-start md:text-left md:max-w-2xl">
         <h1 className=" flex gap-2 md:flex-col text-4xl font-bold text-almost-black md:text-7xl">
           <span>Make</span>
-          <span>remote work</span>
+          <span className="whitespace-nowrap">remote work</span>
         </h1>
         <p className="text-[18px] text-medium-gray my-4 md:my-12 md:max-w-[46ch]">
           Get your team in sync, no matter your location. Streamline processes,

@@ -24,7 +24,7 @@ const Header = (props: Props) => {
   }, []);
 
   const handleResize = () => {
-    if (window.document.body.clientWidth >= 768) {
+    if (window.innerWidth >= 768) {
       setMenuOpen(true);
       return;
     }
