@@ -1,5 +1,5 @@
 import { FC, SVGProps } from "react";
-import { sectionData } from "schemas";
+import { sectionData } from "schema";
 import Dots from "../../assets/images/icon-ellipsis.svg";
 interface Props {
   data: sectionData;
