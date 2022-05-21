@@ -4,6 +4,10 @@ html {
   font-family: "Red Hat Display";
 }
 
+@mixin customTransition($prop, $duration: 200ms) {
+  transition: $prop $duration ease-in-out;
+}
+
 *,
 *::before,
 *::after {
@@ -27,18 +31,17 @@ image {
 
 .main-wrapper {
   width: 100%;
-  overflow: hidden;
-  min-height: 100vh;
+  overflow-x: hidden;
   display: grid;
   place-content: center;
+  padding: 2em;
 }
 
 .card {
-  background-color: $veryPaleBlue;
+  background-color: white;
   border-radius: 1.5em;
   overflow: hidden;
-  width: 80%;
-  max-width: 450px;
+  max-width: 360px;
 }
 
 .card-body {
@@ -46,6 +49,7 @@ image {
   flex-direction: column;
   align-items: center;
   max-width: 100%;
+  padding: 1.5em;
 }
 
 .card-description {
@@ -53,6 +57,118 @@ image {
 }
 
 .card-image {
-  height: 180px;
+  height: auto;
+  aspect-ratio: 2/1;
   width: 100%;
+}
+
+.card-title {
+  margin-bottom: 0.75em;
+  color: $darkBlue;
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+.card-description {
+  text-align: center;
+  line-height: 1.6em;
+  color: $deSaturatedBlue;
+  font-weight: 500;
+}
+
+.card-plan {
+  display: flex;
+  align-items: center;
+  margin-block: 1.8em;
+  background-color: $veryPaleBlue;
+  padding: 1em 1.2em;
+  border-radius: 1em;
+  width: 100%;
+}
+
+.card-plan-title {
+  font-size: 1rem;
+  color: $darkBlue;
+  font-weight: 900;
+}
+
+.card-plan-price {
+  font-size: 1rem;
+  color: $deSaturatedBlue;
+  font-weight: 500;
+  margin-top: 0.2em;
+}
+
+.card-plan-content {
+  margin-left: 1.5em;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.card-plan-button {
+  color: $brightBlue;
+  font-weight: 900;
+  text-decoration: underline;
+  margin-left: auto;
+  @include customTransition(all);
+
+  &:hover {
+    text-decoration: none;
+    color: $deSaturatedBlue;
+  }
+
+  &:focus-visible {
+    text-decoration: none;
+    color: $deSaturatedBlue;
+  }
+}
+
+.cta-proceed-button {
+  width: 100%;
+  padding-block: 1em;
+  background-color: $brightBlue;
+  color: #fff;
+  font-weight: 900;
+  font-size: 1rem;
+  border-radius: 0.8em;
+  margin-bottom: 1.8em;
+  box-shadow: 0em 0.5em 1em $deSaturatedBluePlus;
+  @include customTransition(transform);
+
+  &:hover {
+    transform: scale(0.95);
+    background-color: $brightPinkBlue;
+  }
+
+  &:focus-visible {
+    background-color: $brightPinkBlue;
+    transform: scale(0.95);
+  }
+}
+
+.cta-cancel-button {
+  @include customTransition(color);
+  font-weight: 900;
+  font-size: 0.95rem;
+  color: $deSaturatedBlue;
+  outline: none;
+
+  &:hover {
+    color: $darkBlue;
+  }
+
+  &:focus-visible {
+    color: $darkBlue;
+  }
+}
+
+@media (min-width: 60em) {
+  body {
+    background-image: url("../../images/pattern-background-desktop.svg");
+  }
 }
