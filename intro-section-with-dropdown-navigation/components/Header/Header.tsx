@@ -21,11 +21,19 @@ const Header = (props: Props) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Change the body overflow hide to prevent scroll while navbar open
+  useEffect(() => {
+    if (window.innerWidth >= 768) return;
+
+    document.body.style.overflowY = menuOpen ? "hidden" : "visible";
+  }, [menuOpen]);
+
   const handleResize = () => {
     if (window.innerWidth >= 768) {
       setMenuOpen(true);
       return;
     }
+
     setMenuOpen(false);
   };
 
