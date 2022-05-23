@@ -9,7 +9,7 @@ import NavMenu from "components/NavMenu";
 import MenuOpenIcon from "@images/icon-menu.svg";
 import MenuCloseIcon from "@images/icon-close-menu.svg";
 import LogoIcon from "@images/logo.svg";
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 
 interface Props {}
 const Header = (props: Props) => {
@@ -27,6 +27,18 @@ const Header = (props: Props) => {
       return;
     }
     setMenuOpen(false);
+  };
+
+  const openStyle: CSSProperties = {
+    visibility: "visible",
+    opacity: 1,
+    pointerEvents: "all",
+  };
+
+  const hiddenStyle: CSSProperties = {
+    visibility: "hidden",
+    opacity: 0,
+    pointerEvents: "none",
   };
 
   const handleOpenMenu = (): void => setMenuOpen(!menuOpen);
@@ -50,19 +62,21 @@ const Header = (props: Props) => {
 
       {/* nav container */}
       <div
-        className={`flex absolute inset-0 justify-end bg-black/60 md:bg-transparent md:static md:w-full md:justify-start
-        transition-all delay-200 z-50
-      ${
-        menuOpen
-          ? "visible pointer-events-auto opacity-100"
-          : "invisible pointer-events-none opacity-0"
-      }
-      `}
+        className="flex absolute inset-0 justify-end bg-black/60 md:bg-transparent md:static md:w-full md:justify-start
+        transition delay-200 z-50 invisible pointer-events-none opacity-0 md:visible md:pointer-events-auto md:opacity-100"
+        style={menuOpen ? openStyle : hiddenStyle}
       >
         <div
-          className={`flex flex-col bg-white shadow-2xl shadow-medium-gray/50 w-2/3 max-w-md p-6 md:shadow-none md:p-0 md:flex-row md:justify-between md:w-full md:max-w-none transition-transform duration-300 ease-in-out delay-100
-          ${menuOpen ? "translate-x-0" : "translate-x-full"}
-          `}
+          className="flex flex-col bg-white shadow-2xl shadow-medium-gray/50 w-2/3 max-w-md p-6 md:shadow-none md:p-0 md:flex-row md:justify-between md:w-full md:max-w-none transition md:translate-x-0 duration-300 ease-in-out delay-100"
+          style={
+            menuOpen
+              ? {
+                  transform: "translateX(0)",
+                }
+              : {
+                  transform: "translateX(100%)",
+                }
+          }
         >
           <button
             className="md:pointer-events-none md:hidden w-fit self-end cursor-pointer"
