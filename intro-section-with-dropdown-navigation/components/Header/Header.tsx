@@ -13,7 +13,7 @@ import { CSSProperties, useEffect, useState } from "react";
 
 interface Props {}
 const Header = (props: Props) => {
-  const [menuOpen, setMenuOpen] = useState<boolean>(true);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
     handleResize();
