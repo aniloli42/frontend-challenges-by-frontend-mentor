@@ -13,3 +13,14 @@ interface Daily {
   current: number;
   previous: number;
 }
+
+export type ActiveSection = 'daily' | 'monthly' | 'weekly';
+
+export interface ChildrenContext {
+  children: JSX.Element;
+}
+
+export interface ContextValue {
+  activeSection: ActiveSection;
+  toggleActive: (changeValue: ActiveSection) => void;
+}

@@ -1,6 +1,8 @@
-import Image from "next/image";
+import { useActiveSection } from 'context/ActiveSectionContext';
+import Image from 'next/image';
+import { ActiveSection, ContextValue } from 'schema';
 
-import personImage from "../../assets/images/image-jeremy.png";
+import personImage from '../../assets/images/image-jeremy.png';
 
 interface Props {}
 const MainCard = (props: Props) => {
@@ -16,10 +18,7 @@ const MainCard = (props: Props) => {
         {/* Author Text */}
         <h1 className="text-white font-light flex flex-col">
           <span className="text-paleBlue">Report for</span>
-          <span className="text-2xl lg:w-[6ch] lg:text-4xl">
-            {" "}
-            Jeremy Robson
-          </span>
+          <span className="text-2xl lg:w-[6ch] lg:text-4xl">Jeremy Robson</span>
         </h1>
       </div>
 
@@ -38,8 +37,17 @@ interface EventButtonProps {
 }
 
 const EventButton = ({ title }: EventButtonProps) => {
+  const { activeSection, toggleActive } = useActiveSection() as ContextValue;
+
   return (
-    <button className="text-xl text-deSaturatedBlue hover:text-white focus-visible:text-white outline-none visited:text-deSaturatedBlue">
+    <button
+      className={`text-xl hover:text-white focus-visible:text-white outline-none visited:text-deSaturatedBlue ${
+        activeSection === title.toLowerCase()
+          ? 'text-white'
+          : 'text-deSaturatedBlue'
+      }`}
+      onClick={() => toggleActive(title.toLowerCase() as ActiveSection)}
+    >
       {title}
     </button>
   );
