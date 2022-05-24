@@ -42,24 +42,22 @@ const sectionThemeList = [
 
 const Home: NextPage = () => {
   return (
-    <main className="flex min-h-screen items-center justify-center py-24 px-8 relative overflow-hidden lg:px-16 flex-col lg:flex-row gap-8">
-      <MainCard />
+    <ActiveSectionProvider>
+      <main className="flex min-h-screen items-center justify-center py-24 px-8 relative overflow-hidden lg:px-16 flex-col lg:flex-row gap-8">
+        <MainCard />
 
-      <div className="w-full grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {sectionData?.map((data, index) => (
-          <SectionCard
-            key={index}
-            data={data}
-            sectionTheme={sectionThemeList[index]}
-          />
-        ))}
-      </div>
-    </main>
+        <div className="w-full grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {sectionData?.map((data, index) => (
+            <SectionCard
+              key={index}
+              data={data}
+              sectionTheme={sectionThemeList[index]}
+            />
+          ))}
+        </div>
+      </main>
+    </ActiveSectionProvider>
   );
 };
 
-export default () => (
-  <ActiveSectionProvider>
-    <Home />
-  </ActiveSectionProvider>
-);
+export default Home;

@@ -1,4 +1,4 @@
-import { NextScript, Main, Html, Head } from "next/document";
+import { NextScript, Main, Html, Head } from 'next/document';
 
 const Document = () => {
   return (
@@ -8,7 +8,7 @@ const Document = () => {
           href="https://fonts.googleapis.com/css?family=Rubik:300,regular,500&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="favicon.png" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <body className="bg-veryDarkBlue">
         <Main />

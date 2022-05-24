@@ -12,7 +12,7 @@ const MainCard = (props: Props) => {
       <div className="bg-blue p-8 rounded-xl flex gap-6 items-center -mb-2 relative z-0 lg:flex-col lg:items-start lg:p-6">
         {/* Author Image */}
         <div className="w-16 flex border-[.2em] rounded-full lg:w-20">
-          <Image src={personImage} />
+          <Image src={personImage} alt="Person Image" />
         </div>
 
         {/* Author Text */}
