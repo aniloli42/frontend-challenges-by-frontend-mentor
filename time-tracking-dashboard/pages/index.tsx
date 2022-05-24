@@ -12,6 +12,7 @@ import SelfCareIcon from '../assets/images/icon-self-care.svg';
 import sectionData from 'data.json';
 import MainCard from 'components/MainCard';
 import ActiveSectionProvider from 'context/ActiveSectionContext';
+import Head from 'next/head';
 
 const sectionThemeList = [
   {
@@ -42,21 +43,26 @@ const sectionThemeList = [
 
 const Home: NextPage = () => {
   return (
-    <ActiveSectionProvider>
-      <main className="flex min-h-screen items-center justify-center py-24 px-8 relative overflow-hidden lg:px-16 flex-col lg:flex-row gap-8">
-        <MainCard />
+    <>
+      <Head>
+        <title>Time Tracking Dashboard</title>
+      </Head>
+      <ActiveSectionProvider>
+        <main className="flex min-h-screen items-center justify-center py-24 px-8 relative overflow-hidden lg:px-16 flex-col lg:flex-row gap-8">
+          <MainCard />
 
-        <div className="w-full grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {sectionData?.map((data, index) => (
-            <SectionCard
-              key={index}
-              data={data}
-              sectionTheme={sectionThemeList[index]}
-            />
-          ))}
-        </div>
-      </main>
-    </ActiveSectionProvider>
+          <div className="w-full grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {sectionData?.map((data, index) => (
+              <SectionCard
+                key={index}
+                data={data}
+                sectionTheme={sectionThemeList[index]}
+              />
+            ))}
+          </div>
+        </main>
+      </ActiveSectionProvider>
+    </>
   );
 };
 
