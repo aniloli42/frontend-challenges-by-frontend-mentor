@@ -8,26 +8,32 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 
 type Props = {};
 
-const FORM_DATA_INITIAL = {
-  bill: undefined,
-  tip: undefined,
-  people: undefined,
+interface FormDataType {
+  bill: string | number;
+  tip: string | number;
+  customtip: string | number;
+  people: string | number;
+}
+
+const FORM_DATA_INITIAL: FormDataType = {
+  bill: "",
+  tip: "",
+  customtip: "",
+  people: "",
 };
 
 const MainCard = (props: Props) => {
-  const [formData, setFormData] = useState(FORM_DATA_INITIAL);
-
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+  const [formData, setFormData] = useState<FormDataType>(FORM_DATA_INITIAL);
 
   const tipAmount = useRef<number | null>();
   const totalAmount = useRef<number | null>();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+
     setFormData((prevData) => ({
       ...prevData,
-      [e.target.name]: e.target.valueAsNumber || undefined,
+      [e.target.name]: Number(e.target.value) || "",
     }));
   };
 
@@ -76,17 +82,21 @@ const MainCard = (props: Props) => {
               Select Tip %
             </label>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3.5 mt-2">
-              <TipSelector percentage={5} />
-              <TipSelector percentage={10} />
-              <TipSelector percentage={15} />
-              <TipSelector percentage={25} />
-              <TipSelector percentage={50} />
+              {[5, 10, 15, 25, 50].map((tipPercentage, index) => (
+                <TipSelector
+                  key={index}
+                  percentage={tipPercentage}
+                  handleInputChange={handleInputChange}
+                />
+              ))}
               <Input
                 type="number"
-                name="tip"
+                name="customtip"
                 placeholder="Custom"
                 min={0}
                 max={100}
+                value={formData.customtip}
+                onChange={handleInputChange}
               />
             </div>
           </div>
