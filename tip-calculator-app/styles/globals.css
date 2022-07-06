@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-#__next {
-  @apply w-screen h-screen overflow-hidden bg-lightGrayishCyan;
+body {
+  @apply min-h-screen  bg-lightGrayishCyan;
   font-family: "Space Mono", monospace;
+}
+
+#__next {
+  @apply min-h-screen flex flex-col lg:justify-center;
 }
 
 [type="number"]::-webkit-outer-spin-button,

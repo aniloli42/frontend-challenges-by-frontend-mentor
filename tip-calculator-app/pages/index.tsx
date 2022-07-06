@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Button from "../components/Button";
 import MainCard from "../components/MainCard";
-import InputBox from "../components/InputBox";
+import Logo from "../assets/logo.svg";
+import Image from "next/image";
 
 const Home: NextPage = () => {
   return (
@@ -14,8 +14,10 @@ const Home: NextPage = () => {
           content="App which is useful to calculate the tip from given condition."
         />
       </Head>
-      <main className="w-full h-full flex flex-col items-center p-2 md:p-4">
-        <p>Logo placeholder</p>
+      <main className="min-h-full flex flex-col items-center lg:justify-center p-4">
+        <p className="mt-8 lg:mt-3">
+          <Image src={Logo} alt="brand logo" />
+        </p>
 
         {/* Main Card */}
         <MainCard />
