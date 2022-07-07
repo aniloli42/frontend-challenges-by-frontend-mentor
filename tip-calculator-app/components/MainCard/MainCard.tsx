@@ -4,7 +4,7 @@ import TipSelector from "../TipSelector";
 import DollarSign from "../../assets/icon-dollar.svg";
 import PersonSign from "../../assets/icon-person.svg";
 import Image from "next/image";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 type Props = {};
 
