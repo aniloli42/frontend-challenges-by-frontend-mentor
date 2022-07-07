@@ -3,8 +3,9 @@ import { ChangeEvent, FC, useId } from "react";
 interface Props {
   percentage: number;
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  checked: number | string;
 }
-const TipSelector: FC<Props> = ({ percentage, handleInputChange }) => {
+const TipSelector: FC<Props> = ({ percentage, checked, handleInputChange }) => {
   const id = useId();
 
   return (
@@ -16,6 +17,7 @@ const TipSelector: FC<Props> = ({ percentage, handleInputChange }) => {
         className="peer hidden"
         value={percentage}
         onChange={handleInputChange}
+        checked={checked === percentage}
       />
       <label
         htmlFor={id}

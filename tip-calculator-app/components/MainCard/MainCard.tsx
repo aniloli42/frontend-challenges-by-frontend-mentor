@@ -24,12 +24,19 @@ const FORM_DATA_INITIAL: FormDataType = {
 
 const MainCard = (props: Props) => {
   const [formData, setFormData] = useState<FormDataType>(FORM_DATA_INITIAL);
+  const [error, setError] = useState<string>("");
 
-  const tipAmount = useRef<number | null>();
-  const totalAmount = useRef<number | null>();
+  const [tipAmount, setTipAmount] = useState<number | null>();
+  const [totalAmount, setTotalAmount] = useState<number | null>();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    if (e.target.name === "customtip") {
+      setFormData((prev) => ({ ...prev, tip: "" }));
+    }
+
+    if (e.target.name === "tip") {
+      setFormData((prev) => ({ ...prev, customtip: "" }));
+    }
 
     setFormData((prevData) => ({
       ...prevData,
@@ -37,8 +44,43 @@ const MainCard = (props: Props) => {
     }));
   };
 
+  useEffect(() => {
+    setError("");
+    setTipAmount(null);
+    setTotalAmount(null);
+
+    if (!Number.isInteger(formData.people)) {
+      setError("invalid number");
+    }
+
+    if (
+      formData.people == "" ||
+      (formData.bill == "" && (formData.customtip == "" || formData.tip == ""))
+    )
+      return;
+
+    if (typeof formData.people === "string" || isNaN(formData.people)) return;
+    if (typeof formData.bill === "string" || isNaN(formData.bill)) return;
+
+    let tipCalc;
+
+    if (formData.customtip > 100) return;
+
+    if (formData.customtip != "" && typeof formData.customtip == "number") {
+      tipCalc = formData.bill * ((formData.customtip as number) / 100);
+    } else if (formData.tip != "" && typeof formData.tip == "number") {
+      tipCalc = formData.bill * ((formData.tip as number) / 100);
+    } else {
+      return;
+    }
+
+    setTipAmount(tipCalc / formData.people);
+    setTotalAmount((formData.bill + tipCalc) / formData.people);
+  }, [formData]);
+
   const handleFormReset = () => {
     setFormData(FORM_DATA_INITIAL);
+    setError("");
   };
 
   return (
@@ -87,6 +129,7 @@ const MainCard = (props: Props) => {
                   key={index}
                   percentage={tipPercentage}
                   handleInputChange={handleInputChange}
+                  checked={formData.tip}
                 />
               ))}
               <Input
@@ -129,20 +172,22 @@ const MainCard = (props: Props) => {
               onChange={handleInputChange}
             />
 
-            <p
-              className="justify-self-end text-sm text-red-400 invisible peer-invalid:visible
-          col-[2/3] row-[1/2]
-          "
-            >
-              Can&apos;t be zero
-            </p>
+            {error != "" && (
+              <p
+                className="justify-self-end text-sm text-red-400 invisible peer-invalid:visible
+    col-[2/3] row-[1/2]
+    "
+              >
+                {error}
+              </p>
+            )}
           </div>
         </div>
 
         {/* Calculated Result displaying section */}
         <div className="p-5 lg:p-10 rounded-lg bg-veryDarkCyan mt-6 flex flex-col gap-y-5 lg:mt-0">
-          <DisplayResult title="Tip Amount" price={0} />
-          <DisplayResult title="Total" price={0} />
+          <DisplayResult title="Tip Amount" price={tipAmount} />
+          <DisplayResult title="Total" price={totalAmount} />
           <button
             type="reset"
             className="py-2.5 rounded-md bg-strongCyan text-veryDarkCyan hover:bg-lightGrayishCyan focus-visible:bg-lightGrayishCyan text-lg outline-none mt-auto"

@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 interface Props {
   title: string;
-  price: number;
+  price: number | undefined | null;
 }
 const DisplayResult: FC<Props> = ({ title, price }) => {
   return (
@@ -10,7 +10,7 @@ const DisplayResult: FC<Props> = ({ title, price }) => {
       <h3 className="self-start text-white text-sm">{title ?? "Your Title"}</h3>
       <p className="row-[2/3] col-[1/2] text-xs text-grayishCyan">/ person</p>
       <p className="col-[2/3] row-[1/3] self-center justify-self-end text-grayishCyan text-3xl">
-        ${price ?? "0"}
+        ${price?.toFixed(2) ?? "0"}
       </p>
     </div>
   );
