@@ -53,6 +53,10 @@ const MainCard = (props: Props) => {
       setError("invalid number");
     }
 
+    if (formData.people == 0) {
+      setError("Can't be zero");
+    }
+
     if (
       formData.people == "" ||
       (formData.bill == "" && (formData.customtip == "" || formData.tip == ""))
@@ -120,7 +124,7 @@ const MainCard = (props: Props) => {
 
           {/* tip % selection section */}
           <div className="flex flex-col gap-2 mt-6">
-            <label htmlFor="tip" className="label-text">
+            <label htmlFor="customtip" className="label-text">
               Select Tip %
             </label>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3.5 mt-2">
@@ -135,6 +139,7 @@ const MainCard = (props: Props) => {
               <Input
                 type="number"
                 name="customtip"
+                id="customtip"
                 placeholder="Custom"
                 min={0}
                 max={100}
@@ -162,11 +167,12 @@ const MainCard = (props: Props) => {
               />
             </span>
             <Input
-              type="number"
+              type="text"
+              inputMode="numeric"
               name="people"
               min={1}
               id="people"
-              pattern="\s[0-9]{1,}$"
+              pattern="[0-9]{1,}$"
               className="col-span-2 peer"
               value={formData.people}
               onChange={handleInputChange}

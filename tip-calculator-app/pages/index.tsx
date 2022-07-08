@@ -8,6 +8,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
+        <link rel="icon" href="/favicon.png" />
         <title>Tip Calculator App</title>
         <meta
           name="description"
@@ -15,9 +16,9 @@ const Home: NextPage = () => {
         />
       </Head>
       <main className="min-h-full flex flex-col items-center lg:justify-center p-4">
-        <p className="mt-8 lg:mt-3">
+        <h1 className="mt-8 lg:mt-3">
           <Image src={Logo} alt="brand logo" />
-        </p>
+        </h1>
 
         {/* Main Card */}
         <MainCard />
